@@ -225,3 +225,43 @@ yesnoIf input trueResult falseResult =
     if yesno input
         then trueResult
         else falseResult
+
+-- Frank :: b a -> Frank a b
+data Frank a b = Frank
+    { frankField :: b a
+    } deriving (Show)
+
+class Tofu t where
+    tofu :: j a -> t a j
+
+-- x here represents (j a) which is the (b a) in "Frank (b a)"
+instance Tofu Frank where
+    tofu x = Frank x
+
+-- a = String, b = Maybe
+f1 = Frank {frankField = Just "HAHA"}
+
+-- a = Char, b = Tree
+f2 = Frank {frankField = Node 'a' EmptyTree EmptyTree}
+
+-- a = Char, b = []
+f3 = Frank {frankField = "YES"}
+
+-- (Just 'a') is assigned to x, pattern matched to (j a), which is (b a)
+-- making the call as "Frank (b a)" which is ame as "Frank {frankField = (Just 'a')}"
+-- making Frank Char Maybe
+t1 = tofu (Just 'a') :: Frank Char Maybe
+
+t2 = tofu ["Hello"] :: Frank String []
+
+data Barry t k p = Barry
+    { yabba :: p
+    , dabba :: t k
+    }
+
+-- fmap :: (a -> b) -> f a -> f b
+-- Barry t k p can be rewritten as "Barry t k a" so
+-- in this case, fmap :: (a -> b) -> Barry t k a -> (Barry t k b)
+-- This means yabba (used to be p) goes from a to b so it becomes x to f x
+instance Functor (Barry a b) where
+    fmap f (Barry {yabba = x, dabba = y}) = Barry {yabba = f x, dabba = y}
