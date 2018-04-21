@@ -64,4 +64,9 @@ main6 = do
     putStrLn "The results"
     mapM_ putStrLn colors
 
-main = main6
+main7 =
+    forever $ do
+        l <- getContents
+        putStrLn $ map toUpper l
+
+main = main7
