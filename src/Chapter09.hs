@@ -2,6 +2,7 @@ module Chapter09 where
 
 import Control.Monad
 import Data.Char
+import System.IO
 
 sayHello :: String -> String
 sayHello x = "Hello " ++ x
@@ -69,4 +70,16 @@ main7 =
         l <- getContents
         putStrLn $ map toUpper l
 
-main = main7
+withFile' :: FilePath -> IOMode -> (Handle -> IO a) -> IO a
+withFile' path mode f = do
+    handle <- openFile path mode
+    result <- f handle
+    hClose handle
+    return result
+
+main13 = do
+    withFile' "test-data-2.txt" ReadMode (\h -> do
+        contents <- hGetContents h
+        putStr contents)
+
+main = main13
