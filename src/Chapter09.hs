@@ -70,6 +70,7 @@ main7 =
         l <- getContents
         putStrLn $ map toUpper l
 
+<<<<<<< HEAD
 withFile' :: FilePath -> IOMode -> (Handle -> IO a) -> IO a
 withFile' path mode f = do
     handle <- openFile path mode
@@ -83,3 +84,59 @@ main13 = do
         putStr contents)
 
 main = main13
+||||||| merged common ancestors
+main = main7
+=======
+main8 = interact shortLinesOnly
+
+shortLinesOnly :: String -> String
+shortLinesOnly input =
+    let allLines = lines input
+        shortLines = filter (\l -> length l < 10) allLines
+        result = unlines shortLines
+     in result
+
+main9 = interact $ unlines . filter ((< 15) . length) . lines
+
+responsePalindromes contents = unlines $ map output $ lines contents
+  where
+    output xs =
+        if xs == reverse xs
+            then "palindrome"
+            else "not palindrome"
+
+main10 = interact responsePalindromes
+
+main11 = do
+    handle <- openFile "test-data.txt" ReadMode
+    contents <- hGetContents handle
+    putStr contents
+    hClose handle
+
+main12 =
+    withFile
+        "test-data.txt"
+        ReadMode
+        (\handle -> do
+             contents <- hGetContents handle
+             putStr contents)
+
+doTest = do
+    getLine
+
+doTest2 = do
+    return "a" :: IO String
+
+doTest3 = do
+    do do do return "a" :: IO String
+
+readTest =
+    withFile
+        "test-data.txt"
+        ReadMode
+        (\handle -> do
+             contents <- hGetContents handle
+             putStr contents)
+
+main = main12
+>>>>>>> More chapter 9
