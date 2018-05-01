@@ -2,6 +2,8 @@ module Chapter09 where
 
 import Control.Monad
 import Data.Char
+import Data.List
+import System.Directory
 import System.IO
 
 sayHello :: String -> String
@@ -70,23 +72,6 @@ main7 =
         l <- getContents
         putStrLn $ map toUpper l
 
-<<<<<<< HEAD
-withFile' :: FilePath -> IOMode -> (Handle -> IO a) -> IO a
-withFile' path mode f = do
-    handle <- openFile path mode
-    result <- f handle
-    hClose handle
-    return result
-
-main13 = do
-    withFile' "test-data-2.txt" ReadMode (\h -> do
-        contents <- hGetContents h
-        putStr contents)
-
-main = main13
-||||||| merged common ancestors
-main = main7
-=======
 main8 = interact shortLinesOnly
 
 shortLinesOnly :: String -> String
@@ -138,5 +123,41 @@ readTest =
              contents <- hGetContents handle
              putStr contents)
 
-main = main12
->>>>>>> More chapter 9
+withFile' :: FilePath -> IOMode -> (Handle -> IO a) -> IO a
+withFile' path mode f = do
+    handle <- openFile path mode
+    result <- f handle
+    hClose handle
+    return result
+
+main13 = do
+    withFile'
+        "test-data-2.txt"
+        ReadMode
+        (\h -> do
+             contents <- hGetContents h
+             putStr contents)
+
+main14 = do
+    todoItem <- getLine
+    appendFile "todo.txt" (todoItem ++ "\n")
+
+main15 = do
+    handle <- openFile "todo.txt" ReadMode
+    (tempName, tempHandle) <- openTempFile "." "temp"
+    contents <- hGetContents handle
+    let todoTasks = lines contents
+        numberedTasks = zipWith (\n line -> show n ++ "-" ++ line) [0 ..] todoTasks
+    putStrLn "These are your todos"
+    putStr $ unlines numberedTasks
+    putStrLn "Which ones do you want to delete?"
+    numberString <- getLine
+    let number = read numberString
+        newTodoItems = delete (todoTasks !! number) todoTasks
+    hPutStr tempHandle $ unlines newTodoItems
+    hClose handle
+    hClose tempHandle
+    removeFile "todo.txt"
+    renameFile tempName "todo.txt"
+
+main = main15
