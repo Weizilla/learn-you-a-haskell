@@ -4,6 +4,7 @@ import Control.Monad
 import Data.Char
 import Data.List
 import System.Directory
+import System.Environment
 import System.IO
 
 sayHello :: String -> String
@@ -160,4 +161,10 @@ main15 = do
     removeFile "todo.txt"
     renameFile tempName "todo.txt"
 
-main = main15
+main16 = do
+    args <- getArgs
+    progName <- getProgName
+    putStrLn "The program args are:"
+    mapM_ putStrLn args
+    putStrLn "The program name is:"
+    putStrLn progName
