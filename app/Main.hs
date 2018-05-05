@@ -1,5 +1,5 @@
 module Main where
 
-import qualified Task
+import qualified Chapter09Random
 
-main = Task.main
+main = Chapter09Random.main
