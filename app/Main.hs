@@ -1,5 +1,5 @@
 module Main where
 
-import qualified Chapter09Error
+import qualified Chapter10
 
-main = Chapter09Error.main
+main = Chapter10.main
