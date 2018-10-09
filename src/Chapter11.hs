@@ -1,12 +1,19 @@
 module Chapter11 where
 
-main' :: IO ()
-main' = do
+import Data.Char
+import Data.List
+
+reverseLine = do
     line <- getLine
     let line' = reverse line
-    putStrLn $ "You said " ++ line' ++ " backwards"
+    putStrLn $ "you said " ++ line' ++ " backwards!"
 
-main'' :: IO ()
-main'' = do
-    line' <- fmap reverse getLine
-    putStrLn $ "You said " ++ line' ++ " backwards'"
+reverseLine' = do
+    line <- fmap reverse getLine
+    putStrLn $ "2 you said " ++ line ++ " backwards!"
+
+exclaimationLine = fmap (++ "!") getLine
+
+multiFunctionLine = do
+    line <- fmap (intersperse '-' . reverse . map toUpper) getLine
+    putStrLn line
