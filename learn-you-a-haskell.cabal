@@ -1,8 +1,10 @@
--- This file has been generated from package.yaml by hpack version 0.28.2.
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.0.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 759771bb6eb983c952c6041e510e103df58b1909f909ff683dfe6de66bf8be82
+-- hash: bbc3a8ab76374b1b07b35987413c5bec38409fd37f3e46d60d6fcdd69e7e9fb1
 
 name:           learn-you-a-haskell
 version:        0.1.0.0
@@ -15,10 +17,9 @@ copyright:      Copyright: (c) 2018 Wei Yang
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
-cabal-version:  >= 1.10
 extra-source-files:
-    ChangeLog.md
     README.md
+    ChangeLog.md
 
 source-repository head
   type: git
