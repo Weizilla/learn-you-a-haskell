@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 9fce66c4eae417f172134c71ade98a09fae9071311ed242b152ced769a518f32
+-- hash: 759771bb6eb983c952c6041e510e103df58b1909f909ff683dfe6de66bf8be82
 
 name:           learn-you-a-haskell
 version:        0.1.0.0
@@ -26,7 +26,7 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Chapter4Syntax
   other-modules:
       Paths_learn_you_a_haskell
   hs-source-dirs:
