@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: bbc3a8ab76374b1b07b35987413c5bec38409fd37f3e46d60d6fcdd69e7e9fb1
+-- hash: 3aa27f494002710ef89004aceca2cf91b49272f37bec7435c81d3ccb82d846a6
 
 name:           learn-you-a-haskell
 version:        0.1.0.0
@@ -28,6 +28,7 @@ source-repository head
 library
   exposed-modules:
       Chapter4Syntax
+      Chapter5Recursion
   other-modules:
       Paths_learn_you_a_haskell
   hs-source-dirs:
