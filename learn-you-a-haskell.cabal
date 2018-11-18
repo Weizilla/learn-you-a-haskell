@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 3aa27f494002710ef89004aceca2cf91b49272f37bec7435c81d3ccb82d846a6
+-- hash: d1ba2633ef25782367dc23096b021678acb9b40cb23f7986a9ac8fdd1ed06a2d
 
 name:           learn-you-a-haskell
 version:        0.1.0.0
@@ -29,12 +29,16 @@ library
   exposed-modules:
       Chapter4Syntax
       Chapter5Recursion
+      Chapter6HigherOrder
+      Chapter7Modules
+      Chapter8DataTypes
   other-modules:
       Paths_learn_you_a_haskell
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+    , containers
   default-language: Haskell2010
 
 executable learn-you-a-haskell-exe
@@ -46,6 +50,7 @@ executable learn-you-a-haskell-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers
     , learn-you-a-haskell
   default-language: Haskell2010
 
@@ -59,5 +64,6 @@ test-suite learn-you-a-haskell-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers
     , learn-you-a-haskell
   default-language: Haskell2010
