@@ -64,3 +64,22 @@ data Lst a = Empty | a :-: (Lst a) deriving (Show, Eq)
 infixr .++
 Empty .++ ys = ys
 (x :-: xs) .++ ys = x :-: (xs .++ ys)
+
+data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq)
+
+singleton :: a -> Tree a
+singleton x = Node x EmptyTree EmptyTree
+
+treeInsert :: (Ord a) => a -> Tree a -> Tree a
+treeInsert x EmptyTree = singleton x
+treeInsert x (Node n treeL treeR)
+    | x < n = Node n (treeInsert x treeL) treeR
+    | x > n = Node n treeL (treeInsert x treeR)
+    | otherwise = Node n treeL treeR
+
+treeElem :: (Ord a) => a -> Tree a -> Bool
+treeElem _ EmptyTree = False
+treeElem x (Node n treeL treeR)
+    | x < n = treeElem x treeL
+    | x > n = treeElem x treeR
+    | x == n = True
