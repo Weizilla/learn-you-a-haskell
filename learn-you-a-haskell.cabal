@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d1ba2633ef25782367dc23096b021678acb9b40cb23f7986a9ac8fdd1ed06a2d
+-- hash: 2e1dfa883c7a0c8c7a948c4c269c53e2c157a5ecbb30767133508b389dddd7ee
 
 name:           learn-you-a-haskell
 version:        0.1.0.0
@@ -27,6 +27,7 @@ source-repository head
 
 library
   exposed-modules:
+      Chapter10
       Chapter4Syntax
       Chapter5Recursion
       Chapter6HigherOrder
