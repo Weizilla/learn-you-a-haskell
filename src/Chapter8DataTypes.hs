@@ -112,3 +112,7 @@ instance YesNo (Maybe a) where
     yesno (Just _) = True
     yesno Nothing = False
 
+
+instance Functor Tree where
+    fmap f (Node a l r) = Node (f a) (fmap f l) (fmap f r)
+    fmap _ EmptyTree = EmptyTree
