@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.31.0.
+-- This file has been generated from package.yaml by hpack version 0.31.1.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2e1dfa883c7a0c8c7a948c4c269c53e2c157a5ecbb30767133508b389dddd7ee
+-- hash: 65934075adac2987f789fb91d6b646730b85f3ffe8839db502ef4508523d7bc0
 
 name:           learn-you-a-haskell
 version:        0.1.0.0
@@ -33,6 +33,7 @@ library
       Chapter6HigherOrder
       Chapter7Modules
       Chapter8DataTypes
+      Chapter9IO
   other-modules:
       Paths_learn_you_a_haskell
   hs-source-dirs:
